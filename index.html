@@ -163,7 +163,7 @@
       }
     });
 
-    // Make cards keyboard + click navigable (placeholder navigation)
+    // Make cards keyboard + click navigable with security bulletin acknowledgement
     document.querySelectorAll('.card').forEach(card => {
       card.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -176,8 +176,15 @@
         const level = card.classList.contains('lvl1') ? 1
                     : card.classList.contains('lvl2') ? 2
                     : 3;
-        // Future: navigate to level-specific guide page
-        console.info(`Navigating to level ${level} guide…`);
+        const destination = level === 1 ? 'subpage-1.html'
+                          : level === 2 ? 'subpage-2.html'
+                          : 'subpage-3.html';
+        const acknowledged = window.confirm(
+          `Security Bulletin\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nClick OK to acknowledge and continue to subpage ${level}.`
+        );
+        if (acknowledged) {
+          window.location.href = destination;
+        }
       });
     });
   </script>
