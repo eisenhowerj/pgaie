@@ -7,7 +7,22 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main style="max-width:900px;margin:4rem auto;padding:0 1rem;">
+
+  <!-- Security Bulletin Overlay -->
+  <div id="security-bulletin" class="bulletin-overlay" role="alertdialog"
+       aria-modal="true" aria-labelledby="bulletin-title">
+    <div class="bulletin-box" style="border-color:#a78bfa;">
+      <h2 id="bulletin-title">Security Bulletin</h2>
+      <ul>
+        <li>AI makes mistakes (so do humans).</li>
+        <li>If you have access to sensitive info (HR), so does AI, in some cases.</li>
+        <li>Spam/scam of yesteryear will become much harder to recognize. Calendar invites, email, copy &amp; paste from the "wild" internet are still dangerous.</li>
+      </ul>
+      <button id="bulletin-ack" class="bulletin-btn" style="background:#a78bfa;">I Acknowledge</button>
+    </div>
+  </div>
+
+  <main id="page-content" class="page-content-hidden" tabindex="-1" style="max-width:900px;margin:4rem auto;padding:0 1rem;">
     <h1>Subpage 1 Framework</h1>
     <p style="margin-top:1rem;line-height:1.6;">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -15,5 +30,15 @@
     </p>
     <p style="margin-top:1.5rem;"><a href="index.html" style="color:#a78bfa;">← Back to the front page</a></p>
   </main>
+
+  <script>
+    document.getElementById('bulletin-ack').focus();
+    document.getElementById('bulletin-ack').addEventListener('click', function () {
+      document.getElementById('security-bulletin').style.display = 'none';
+      var content = document.getElementById('page-content');
+      content.classList.remove('page-content-hidden');
+      content.focus();
+    });
+  </script>
 </body>
 </html>

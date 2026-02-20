@@ -302,6 +302,71 @@ footer {
   pointer-events: none;
 }
 
+/* ─── Security Bulletin Overlay ───────────────────────────── */
+
+.bulletin-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+}
+
+.bulletin-box {
+  background: #1a1a2e;
+  border: 2px solid;
+  border-radius: var(--card-radius);
+  padding: 2.5rem 2rem;
+  max-width: 560px;
+  width: 100%;
+  text-align: left;
+}
+
+.bulletin-box h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1.2rem;
+}
+
+.bulletin-box ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+  margin-bottom: 1.8rem;
+}
+
+.bulletin-box li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #d0d0e0;
+  margin-bottom: 0.6rem;
+}
+
+.bulletin-btn {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.6rem;
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f0f1a;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.bulletin-btn:hover {
+  opacity: 0.85;
+}
+
+.page-content-hidden {
+  display: none;
+}
+
 /* ─── Responsive ─────────────────────────────────────────── */
 
 @media (max-width: 700px) {
