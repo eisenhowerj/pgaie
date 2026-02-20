@@ -31,18 +31,21 @@
         <div class="card-inner">
           <span class="skill-badge">Level 1</span>
           <h2>I am a…</h2>
-          <p class="tagline">"What's this AI stuff?"</p>
 
           <div class="roles-scroll" aria-label="Roles">
-            <span class="role-pill">Administrative Assistant</span>
-            <span class="role-pill">Office Manager</span>
-            <span class="role-pill">Executive Assistant</span>
-            <span class="role-pill">HR Coordinator</span>
-            <span class="role-pill">Customer Service Rep</span>
-            <span class="role-pill">Sales Associate</span>
-            <span class="role-pill">Accountant</span>
-            <span class="role-pill">Marketing Coordinator</span>
+            <div class="roles-track">
+              <span class="role-pill">Administrative Assistant</span>
+              <span class="role-pill">Office Manager</span>
+              <span class="role-pill">Executive Assistant</span>
+              <span class="role-pill">HR Coordinator</span>
+              <span class="role-pill">Customer Service Rep</span>
+              <span class="role-pill">Sales Associate</span>
+              <span class="role-pill">Accountant</span>
+              <span class="role-pill">Marketing Coordinator</span>
+            </div>
           </div>
+
+          <p class="tagline">"What's this AI stuff?"</p>
 
           <div class="card-cta" aria-hidden="true">
             Start here
@@ -61,18 +64,21 @@
         <div class="card-inner">
           <span class="skill-badge">Level 2</span>
           <h2>I am a…</h2>
-          <p class="tagline">"I know the lingo"</p>
 
           <div class="roles-scroll" aria-label="Roles">
-            <span class="role-pill">Project Manager</span>
-            <span class="role-pill">Team Lead</span>
-            <span class="role-pill">Business Analyst</span>
-            <span class="role-pill">Product Owner</span>
-            <span class="role-pill">Operations Manager</span>
-            <span class="role-pill">Scrum Master</span>
-            <span class="role-pill">Consultant</span>
-            <span class="role-pill">Strategy Lead</span>
+            <div class="roles-track">
+              <span class="role-pill">Project Manager</span>
+              <span class="role-pill">Team Lead</span>
+              <span class="role-pill">Business Analyst</span>
+              <span class="role-pill">Product Owner</span>
+              <span class="role-pill">Operations Manager</span>
+              <span class="role-pill">Scrum Master</span>
+              <span class="role-pill">Consultant</span>
+              <span class="role-pill">Strategy Lead</span>
+            </div>
           </div>
+
+          <p class="tagline">"I know the lingo"</p>
 
           <div class="card-cta" aria-hidden="true">
             Jump in
@@ -91,18 +97,21 @@
         <div class="card-inner">
           <span class="skill-badge">Level 3</span>
           <h2>I am a…</h2>
-          <p class="tagline">"git is my pastime"</p>
 
           <div class="roles-scroll" aria-label="Roles">
-            <span class="role-pill">Software Engineer</span>
-            <span class="role-pill">DevOps Engineer</span>
-            <span class="role-pill">Data Scientist</span>
-            <span class="role-pill">ML Engineer</span>
-            <span class="role-pill">Cloud Architect</span>
-            <span class="role-pill">Security Engineer</span>
-            <span class="role-pill">Platform Engineer</span>
-            <span class="role-pill">SRE</span>
+            <div class="roles-track">
+              <span class="role-pill">Software Engineer</span>
+              <span class="role-pill">DevOps Engineer</span>
+              <span class="role-pill">Data Scientist</span>
+              <span class="role-pill">ML Engineer</span>
+              <span class="role-pill">Cloud Architect</span>
+              <span class="role-pill">Security Engineer</span>
+              <span class="role-pill">Platform Engineer</span>
+              <span class="role-pill">SRE</span>
+            </div>
           </div>
+
+          <p class="tagline">"git is my pastime"</p>
 
           <div class="card-cta" aria-hidden="true">
             Go deep
@@ -146,6 +155,16 @@
       // If sessionStorage is unavailable (e.g., disabled or in private mode),
       // leave the Easter egg hidden and continue running the rest of the script.
     }
+
+    // Ticker-tape: duplicate each roles-track for a seamless infinite loop
+    document.querySelectorAll('.roles-scroll').forEach(scroll => {
+      const track = scroll.querySelector('.roles-track');
+      if (track) {
+        const clone = track.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        scroll.appendChild(clone);
+      }
+    });
 
     // Make cards keyboard + click navigable (placeholder navigation)
     document.querySelectorAll('.card').forEach(card => {

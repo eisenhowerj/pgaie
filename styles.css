@@ -171,43 +171,55 @@ html, body {
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--accent);
-  margin-bottom: 1.4rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
   font-style: italic;
 }
 
-/* ─── Horizontally-scrolling role pills ─────────────────── */
+/* ─── Ticker-tape role pills ─────────────────────────────── */
 
 .roles-scroll {
   display: flex;
-  gap: 0.55rem;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent) transparent;
+  overflow: hidden;
   /* fade-out edges */
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 6%,
-    black 94%,
+    black 8%,
+    black 92%,
     transparent 100%
   );
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 6%,
-    black 94%,
+    black 8%,
+    black 92%,
     transparent 100%
   );
 }
 
-.roles-scroll::-webkit-scrollbar {
-  height: 4px;
+.roles-track {
+  display: flex;
+  gap: 0.55rem;
+  width: max-content;
+  animation: ticker 18s linear infinite;
 }
-.roles-scroll::-webkit-scrollbar-track { background: transparent; }
-.roles-scroll::-webkit-scrollbar-thumb {
-  background-color: var(--accent);
-  border-radius: 999px;
+
+.card:hover .roles-track,
+.card:focus-visible .roles-track,
+.card:focus-within .roles-track {
+  animation-play-state: paused;
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roles-track {
+    animation: none;
+  }
 }
 
 .role-pill {
