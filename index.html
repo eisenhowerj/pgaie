@@ -118,6 +118,9 @@
     </section>
   </main>
 
+  <!-- Easter egg: shown to ~5% of visitors via JS -->
+  <img id="easter-egg" data-src="images/iatgu.png" alt="You found it!" />
+
   <footer>
     <p>Practical Guide to AI in the Enterprise &nbsp;·&nbsp;
        <a href="https://github.com/eisenhowerj/pgaie"
@@ -127,6 +130,23 @@
   </footer>
 
   <script>
+    // Easter egg: show to ~5% of visitors (decision persisted for the session)
+    try {
+      const eggKey = 'easter-egg-visible';
+      if (sessionStorage.getItem(eggKey) === null) {
+        sessionStorage.setItem(eggKey, Math.random() < 0.05 ? '1' : '0');
+      }
+      if (sessionStorage.getItem(eggKey) === '1') {
+        const egg = document.getElementById('easter-egg');
+        egg.onerror = () => { egg.style.display = 'none'; };
+        egg.src = egg.dataset.src;
+        egg.style.display = 'block';
+      }
+    } catch (e) {
+      // If sessionStorage is unavailable (e.g., disabled or in private mode),
+      // leave the Easter egg hidden and continue running the rest of the script.
+    }
+
     // Make cards keyboard + click navigable (placeholder navigation)
     document.querySelectorAll('.card').forEach(card => {
       card.addEventListener('keydown', e => {
