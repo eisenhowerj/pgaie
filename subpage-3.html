@@ -6,21 +6,28 @@
   <title>Subpage 3 · Practical Guide to AI in the Enterprise</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="lvl3">
 
   <!-- Security Bulletin Overlay -->
   <div id="security-bulletin" class="bulletin-overlay" role="alertdialog"
-       aria-modal="true" aria-labelledby="bulletin-title">
-    <div class="bulletin-box" style="border-color:#38bdf8;">
+       aria-modal="true" aria-labelledby="bulletin-title" aria-describedby="bulletin-content">
+    <div class="bulletin-box">
       <h2 id="bulletin-title">Security Bulletin</h2>
-      <ul>
+      <ul id="bulletin-content">
         <li>If you iterate enough, AI doesn't make <em>as many</em> mistakes.</li>
         <li>You may have access to very powerful resources, tread carefully.</li>
         <li>Don't use $thing that was just announced <em>today</em> on corporate devices.</li>
       </ul>
-      <button id="bulletin-ack" class="bulletin-btn" style="background:#38bdf8;">I Acknowledge</button>
+      <button id="bulletin-ack" class="bulletin-btn" type="button">I Acknowledge</button>
     </div>
   </div>
+
+  <noscript>
+    <style>
+      #security-bulletin { display: none !important; }
+      #page-content { display: block !important; }
+    </style>
+  </noscript>
 
   <main id="page-content" class="page-content-hidden" tabindex="-1" style="max-width:900px;margin:4rem auto;padding:0 1rem;">
     <h1>Subpage 3 Framework</h1>
@@ -28,16 +35,19 @@
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
-    <p style="margin-top:1.5rem;"><a href="index.html" style="color:#38bdf8;">← Back to the front page</a></p>
+    <p style="margin-top:1.5rem;"><a href="index.html" style="color:var(--accent);">← Back to the front page</a></p>
   </main>
 
   <script>
-    document.getElementById('bulletin-ack').focus();
-    document.getElementById('bulletin-ack').addEventListener('click', function () {
-      document.getElementById('security-bulletin').style.display = 'none';
-      var content = document.getElementById('page-content');
-      content.classList.remove('page-content-hidden');
-      content.focus();
+    const bulletinAck = document.getElementById('bulletin-ack');
+    const securityBulletin = document.getElementById('security-bulletin');
+    const pageContent = document.getElementById('page-content');
+
+    bulletinAck.focus();
+    bulletinAck.addEventListener('click', () => {
+      securityBulletin.style.display = 'none';
+      pageContent.classList.remove('page-content-hidden');
+      pageContent.focus();
     });
   </script>
 </body>

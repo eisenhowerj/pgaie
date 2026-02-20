@@ -138,6 +138,11 @@ html, body {
 .card.lvl2 { --card-bg-start: #0f2027; --card-bg-end: #203a43; --accent: #34d399; }
 .card.lvl3 { --card-bg-start: #1a0a2e; --card-bg-end: #16213e; --accent: #38bdf8; }
 
+/* Per-subpage accent (applied via body class) */
+body.lvl1 { --accent: #a78bfa; }
+body.lvl2 { --accent: #34d399; }
+body.lvl3 { --accent: #38bdf8; }
+
 .card-inner {
   padding: 2rem 1.8rem 2rem;
 }
@@ -317,12 +322,15 @@ footer {
 
 .bulletin-box {
   background: #1a1a2e;
-  border: 2px solid;
+  border: 2px solid var(--accent);
   border-radius: var(--card-radius);
   padding: 2.5rem 2rem;
   max-width: 560px;
   width: 100%;
   text-align: left;
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .bulletin-box h2 {
@@ -355,6 +363,7 @@ footer {
   font-size: 1rem;
   font-weight: 700;
   color: #0f0f1a;
+  background: var(--accent);
   cursor: pointer;
   transition: opacity 0.2s;
 }
