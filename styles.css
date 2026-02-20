@@ -138,6 +138,11 @@ html, body {
 .card.lvl2 { --card-bg-start: #0f2027; --card-bg-end: #203a43; --accent: #34d399; }
 .card.lvl3 { --card-bg-start: #1a0a2e; --card-bg-end: #16213e; --accent: #38bdf8; }
 
+/* Per-subpage accent (applied via body class) */
+body.lvl1 { --accent: #a78bfa; }
+body.lvl2 { --accent: #34d399; }
+body.lvl3 { --accent: #38bdf8; }
+
 .card-inner {
   padding: 2rem 1.8rem 2rem;
 }
@@ -300,6 +305,75 @@ footer {
   border-radius: 0.5rem;
   z-index: 999;
   pointer-events: none;
+}
+
+/* ─── Security Bulletin Overlay ───────────────────────────── */
+
+.bulletin-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+}
+
+.bulletin-box {
+  background: #1a1a2e;
+  border: 2px solid var(--accent);
+  border-radius: var(--card-radius);
+  padding: 2.5rem 2rem;
+  max-width: 560px;
+  width: 100%;
+  text-align: left;
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.bulletin-box h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1.2rem;
+}
+
+.bulletin-box ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+  margin-bottom: 1.8rem;
+}
+
+.bulletin-box li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #d0d0e0;
+  margin-bottom: 0.6rem;
+}
+
+.bulletin-btn {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.6rem;
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f0f1a;
+  background: var(--accent);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.bulletin-btn:hover {
+  opacity: 0.85;
+}
+
+.page-content-hidden {
+  display: none;
 }
 
 /* ─── Responsive ─────────────────────────────────────────── */

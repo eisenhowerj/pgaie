@@ -6,14 +6,47 @@
   <title>Subpage 2 · Practical Guide to AI in the Enterprise</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <main style="max-width:900px;margin:4rem auto;padding:0 1rem;">
+<body class="lvl2">
+
+  <!-- Security Bulletin Overlay -->
+  <div id="security-bulletin" class="bulletin-overlay" role="alertdialog"
+       aria-modal="true" aria-labelledby="bulletin-title" aria-describedby="bulletin-content">
+    <div class="bulletin-box">
+      <h2 id="bulletin-title">Security Bulletin</h2>
+      <ul id="bulletin-content">
+        <li>AI makes mistakes. AI also "agrees" with the silliest ideas (AI vendors need to drive up user engagement).</li>
+      </ul>
+      <button id="bulletin-ack" class="bulletin-btn" type="button">I Acknowledge</button>
+    </div>
+  </div>
+
+  <noscript>
+    <style>
+      #security-bulletin { display: none !important; }
+      #page-content { display: block !important; }
+    </style>
+  </noscript>
+
+  <main id="page-content" class="page-content-hidden" tabindex="-1" style="max-width:900px;margin:4rem auto;padding:0 1rem;">
     <h1>Subpage 2 Framework</h1>
     <p style="margin-top:1rem;line-height:1.6;">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
     </p>
-    <p style="margin-top:1.5rem;"><a href="index.html" style="color:#34d399;">← Back to the front page</a></p>
+    <p style="margin-top:1.5rem;"><a href="index.html" style="color:var(--accent);">← Back to the front page</a></p>
   </main>
+
+  <script>
+    const bulletinAck = document.getElementById('bulletin-ack');
+    const securityBulletin = document.getElementById('security-bulletin');
+    const pageContent = document.getElementById('page-content');
+
+    bulletinAck.focus();
+    bulletinAck.addEventListener('click', () => {
+      securityBulletin.style.display = 'none';
+      pageContent.classList.remove('page-content-hidden');
+      pageContent.focus();
+    });
+  </script>
 </body>
 </html>
