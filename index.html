@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Practical Guide to AI in the Enterprise</title>
+  <meta name="description"
+        content="Get past the AI learning curve, wherever you're starting from." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       Rainbow Banner — "Context is everything"
+       ══════════════════════════════════════════ -->
+  <header class="rainbow-banner" role="banner">
+    <div class="arc" aria-hidden="true"></div>
+    <h1>Context is everything</h1>
+    <p class="subtitle">Practical Guide to AI&nbsp;in the Enterprise</p>
+  </header>
+
+  <!-- ══════════════════════════════════════════
+       Three skill-level cards
+       ══════════════════════════════════════════ -->
+  <main>
+    <section class="cards-section" aria-label="Choose your starting point">
+
+      <!-- ── Card 1 · Level 1 ── -->
+      <article class="card lvl1" tabindex="0" role="button"
+               aria-label="I am a… What's this AI stuff? — Level 1">
+        <div class="card-inner">
+          <span class="skill-badge">Level 1</span>
+          <h2>I am a…</h2>
+          <p class="tagline">"What's this AI stuff?"</p>
+
+          <div class="roles-scroll" aria-label="Roles">
+            <span class="role-pill">Administrative Assistant</span>
+            <span class="role-pill">Office Manager</span>
+            <span class="role-pill">Executive Assistant</span>
+            <span class="role-pill">HR Coordinator</span>
+            <span class="role-pill">Customer Service Rep</span>
+            <span class="role-pill">Sales Associate</span>
+            <span class="role-pill">Accountant</span>
+            <span class="role-pill">Marketing Coordinator</span>
+          </div>
+
+          <div class="card-cta" aria-hidden="true">
+            Start here
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.5"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Card 2 · Level 2 ── -->
+      <article class="card lvl2" tabindex="0" role="button"
+               aria-label="I am a… I know the lingo — Level 2">
+        <div class="card-inner">
+          <span class="skill-badge">Level 2</span>
+          <h2>I am a…</h2>
+          <p class="tagline">"I know the lingo"</p>
+
+          <div class="roles-scroll" aria-label="Roles">
+            <span class="role-pill">Project Manager</span>
+            <span class="role-pill">Team Lead</span>
+            <span class="role-pill">Business Analyst</span>
+            <span class="role-pill">Product Owner</span>
+            <span class="role-pill">Operations Manager</span>
+            <span class="role-pill">Scrum Master</span>
+            <span class="role-pill">Consultant</span>
+            <span class="role-pill">Strategy Lead</span>
+          </div>
+
+          <div class="card-cta" aria-hidden="true">
+            Jump in
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.5"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Card 3 · Level 3 ── -->
+      <article class="card lvl3" tabindex="0" role="button"
+               aria-label="I am a… git is my pastime — Level 3">
+        <div class="card-inner">
+          <span class="skill-badge">Level 3</span>
+          <h2>I am a…</h2>
+          <p class="tagline">"git is my pastime"</p>
+
+          <div class="roles-scroll" aria-label="Roles">
+            <span class="role-pill">Software Engineer</span>
+            <span class="role-pill">DevOps Engineer</span>
+            <span class="role-pill">Data Scientist</span>
+            <span class="role-pill">ML Engineer</span>
+            <span class="role-pill">Cloud Architect</span>
+            <span class="role-pill">Security Engineer</span>
+            <span class="role-pill">Platform Engineer</span>
+            <span class="role-pill">SRE</span>
+          </div>
+
+          <div class="card-cta" aria-hidden="true">
+            Go deep
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.5"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>Practical Guide to AI in the Enterprise &nbsp;·&nbsp;
+       <a href="https://github.com/eisenhowerj/pgaie"
+          style="color:inherit;text-decoration:underline dotted;"
+          target="_blank" rel="noopener noreferrer">GitHub</a>
+    </p>
+  </footer>
+
+  <script>
+    // Make cards keyboard + click navigable (placeholder navigation)
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.click();
+        }
+      });
+
+      card.addEventListener('click', () => {
+        const level = card.classList.contains('lvl1') ? 1
+                    : card.classList.contains('lvl2') ? 2
+                    : 3;
+        // Future: navigate to level-specific guide page
+        console.info(`Navigating to level ${level} guide…`);
+      });
+    });
+  </script>
+
+</body>
+</html>

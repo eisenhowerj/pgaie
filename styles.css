@@ -1,0 +1,304 @@
+/* =========================================================
+   Practical Guide to AI in the Enterprise — front page
+   Reactive infographic-style, floating & expanding cards
+   ========================================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --card-radius: 1.5rem;
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  --card-hover-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  --transition: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+html, body {
+  min-height: 100%;
+  font-family: var(--font);
+  background: #0f0f1a;
+  color: #f0f0f5;
+  overflow-x: hidden;
+}
+
+/* ─── Rainbow Banner ────────────────────────────────────── */
+
+.rainbow-banner {
+  position: relative;
+  width: 100%;
+  padding: 3.5rem 1rem 2.5rem;
+  background: linear-gradient(
+    135deg,
+    #ff0000 0%,
+    #ff7700 14%,
+    #ffee00 28%,
+    #00cc44 42%,
+    #0088ff 57%,
+    #6600cc 71%,
+    #cc00aa 85%,
+    #ff0066 100%
+  );
+  text-align: center;
+  overflow: hidden;
+}
+
+.rainbow-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.rainbow-banner .arc {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160%;
+  aspect-ratio: 2 / 1;
+  border-radius: 0 0 50% 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.08) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.rainbow-banner h1 {
+  position: relative;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-shadow:
+    0 2px 8px rgba(0,0,0,0.5),
+    0 0 40px rgba(255,255,255,0.3);
+}
+
+.rainbow-banner p.subtitle {
+  position: relative;
+  margin-top: 0.6rem;
+  font-size: clamp(0.9rem, 2vw, 1.15rem);
+  color: rgba(255,255,255,0.88);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.45);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ─── Cards Section ─────────────────────────────────────── */
+
+.cards-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3.5rem 2rem 5rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* ─── Individual Card ───────────────────────────────────── */
+
+.card {
+  flex: 1 1 300px;
+  max-width: 380px;
+  background: linear-gradient(160deg, var(--card-bg-start), var(--card-bg-end));
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  cursor: pointer;
+  overflow: hidden;
+  transform: translateY(0) scale(1);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: var(--card-hover-shadow);
+  outline: none;
+}
+
+.card:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+/* Level-specific colour palettes */
+.card.lvl1 { --card-bg-start: #1a1a3e; --card-bg-end: #2d1b69; --accent: #a78bfa; }
+.card.lvl2 { --card-bg-start: #0f2027; --card-bg-end: #203a43; --accent: #34d399; }
+.card.lvl3 { --card-bg-start: #1a0a2e; --card-bg-end: #16213e; --accent: #38bdf8; }
+
+.card-inner {
+  padding: 2rem 1.8rem 2rem;
+}
+
+/* Skill badge */
+.skill-badge {
+  display: inline-block;
+  padding: 0.25rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.1);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  margin-bottom: 1rem;
+}
+
+/* "I am a" heading */
+.card h2 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+}
+
+/* Tagline */
+.card .tagline {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 1.4rem;
+  font-style: italic;
+}
+
+/* ─── Horizontally-scrolling role pills ─────────────────── */
+
+.roles-scroll {
+  display: flex;
+  gap: 0.55rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+  /* fade-out edges */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+.roles-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.roles-scroll::-webkit-scrollbar-track { background: transparent; }
+.roles-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+  border-radius: 999px;
+}
+
+.role-pill {
+  flex: 0 0 auto;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: #e0e0f0;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.role-pill:hover {
+  background: var(--accent);
+  color: #0f0f1a;
+  border-color: var(--accent);
+}
+
+/* ─── Card CTA ──────────────────────────────────────────── */
+
+.card-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.8rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.85;
+  transition: opacity 0.2s, gap 0.2s;
+}
+
+.card:hover .card-cta {
+  opacity: 1;
+  gap: 0.8rem;
+}
+
+.card-cta svg {
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.card:hover .card-cta svg {
+  transform: translateX(4px);
+}
+
+/* ─── Footer ────────────────────────────────────────────── */
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.3);
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+/* ─── Entrance animation ─────────────────────────────────── */
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card {
+  animation: floatIn 0.6s ease both;
+}
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.25s; }
+.card:nth-child(3) { animation-delay: 0.4s; }
+
+/* ─── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 700px) {
+  .cards-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem 4rem;
+  }
+  .card {
+    max-width: 100%;
+    width: 100%;
+  }
+}
